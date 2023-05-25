@@ -1,0 +1,13 @@
+{{define "chat"}}
+<div ref="chatContainerRef" id="chatContainer" class="overflow-auto w-full h-full" @scroll="handleScroll">
+    <model-component v-if="cid" :content="modelLabel"></model-component>
+
+    <div v-for="(item, index) in chatData[cid]?.chatList">
+        <question-component v-if="item.role === 'user'" :content="item.content"></question-component>
+        <reply-component v-if="item.role === 'assistant'" :content="item.content" :index="index"></reply-component>
+    </div>
+
+    <div style="height: 12rem;flex-shrink: 0;width: 100%;"></div>
+</div>
+<n-back-top v-if="!isMobile" style="z-index: 99999;" :listen-to="target"></n-back-top>
+{{end}}

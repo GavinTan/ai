@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+.n-layout-sider .n-menu-item {
+    border-radius: 0.375rem;
+}
+
+.n-layout-sider .n-menu-item .masking {
+    background-image: linear-gradient(to left, #202123, rgba(32, 33, 35, 0));
+}
+
+.n-layout-sider .n-menu-item .n-menu-item-content--selected .masking {
+    background-image: linear-gradient(to left, #343541, rgba(52, 53, 65, 0)) !important;
+}
+
+.n-layout-sider .n-menu-item:hover .masking {
+    background-image: linear-gradient(to left, #2a2b32, rgba(42, 43, 50, 0));
+}
+
+
+.n-layout-sider .n-menu-item .btn-tools {
+    visibility: hidden;
+}
+
+.n-layout-sider .n-menu-item .n-menu-item-content--selected .btn-tools {
+    visibility: visible;
+}
+
+.n-layout-sider .n-menu-item .n-menu-item-content--selected {
+    border-radius: 0.375rem;
+    background-color: rgba(52, 53, 65, 1) !important;
+}
+
+.n-layout-sider .n-menu-item:hover {
+    background-color: rgba(42, 43, 50, 1);
+}
+
+.n-layout-sider .n-menu-item .n-menu-item-content--selected a {
+    padding-right: 1.25rem !important;
+}
+
+.n-menu .n-menu-item-content {
+    transition: none;
+}
+
+::-webkit-scrollbar {
+    height: 1rem;
+    width: .5rem;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: .5rem;
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+    --tw-border-opacity: 1;
+    background-color: rgba(217, 217, 227, .8);
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+    border-radius: 9999px;
+    border-width: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(236, 236, 241, var(--tw-bg-opacity));
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    --tw-bg-opacity: 1;
+    background-color: rgba(86, 88, 105, var(--tw-bg-opacity));
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(172, 172, 190, var(--tw-bg-opacity));
+}
+
+@media (min-width: 768px) {
+    .scrollbar-trigger::-webkit-scrollbar-thumb {
+        visibility: hidden;
+    }
+
+    .scrollbar-trigger:hover::-webkit-scrollbar-thumb {
+        visibility: visible;
+    }
+}
+
+.dark .dark\:md\:bg-vert-dark-gradient {
+    background-image: linear-gradient(180deg, rgba(53, 55, 64, 0), #353740 58.85%);
+}
+
+.md\:bg-vert-light-gradient {
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 13.94%, #fff 54.73%);
+}
+
+.result-streaming:empty:after,
+.result-streaming>:not(ol):not(ul):not(pre):last-child:after,
+.result-streaming>ol:last-child li:last-child:after,
+.result-streaming>pre:last-child code:after,
+.result-streaming>ul:last-child li:last-child:after {
+    -webkit-animation: blink 1s steps(5, start) infinite;
+    animation: blink 1s steps(5, start) infinite;
+    content: "▋";
+    margin-left: .25rem;
+    vertical-align: baseline;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+    padding: 0 !important;
+}
+
+.btn-neutral {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    background-color:rgba(255,255,255,var(--tw-bg-opacity)) !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    color: rgba(64, 65, 79, var(--tw-text-opacity)) !important;
+}
+
+.btn-neutral:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(236, 236, 241, var(--tw-bg-opacity)) !important;
+}
+
+.btn-neutral:focus {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    --tw-ring-offset-width: 2px;
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), 0 0 transparent;
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 transparent)
+}
+
+.btn-neutral.focus-visible {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity))
+}
+
+.btn-neutral:focus-visible {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity))
+}
+
+.dark .btn-neutral {
+    --tw-border-opacity: 1;
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    background-color: rgba(52, 53, 65, var(--tw-bg-opacity)) !important;
+    border-color: rgba(86, 88, 105, var(--tw-border-opacity)) !important;
+    color: rgba(217, 217, 227, var(--tw-text-opacity)) !important;
+}
+
+.dark .btn-neutral:hover {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    background-color: rgba(64, 65, 79, var(--tw-bg-opacity)) !important;
+    color: rgba(217, 217, 227, var(--tw-text-opacity)) !important;
+}
+
+
+/* loding */
+.loading-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.balls {
+    width: 4em;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.balls div {
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 50%;
+    background-color: rgba(86, 88, 105, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    .balls div {
+        background-color: rgba(236, 236, 241, 1);
+    }
+
+    .n-base-select-menu .n-base-select-option.n-base-select-option--selected.n-base-select-option--pending::before {
+        background-color: rgba(64, 65, 79, 1);
+    }
+
+
+    .n-base-select-menu .n-base-select-option.n-base-select-option--pending::before {
+        background-color: rgba(64, 65, 79, 1);
+    }
+}
+
+.balls div:nth-of-type(1) {
+    transform: translateX(-100%);
+    animation: left-swing 0.5s ease-in alternate infinite;
+}
+
+.balls div:nth-of-type(3) {
+    transform: translateX(-95%);
+    animation: right-swing 0.5s ease-out alternate infinite;
+}
+
+@keyframes left-swing {
+
+    50%,
+    100% {
+        transform: translateX(95%);
+    }
+}
+
+@keyframes right-swing {
+    50% {
+        transform: translateX(-95%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #121212;
+    }
+}

@@ -1,0 +1,9 @@
+cqhttp_api = ""
+group_id = ""
+openai_api = ""
+openai_api_key = ""
+http_proxy = ""
+model = "gpt-3.5-turbo"
+max_tokens = 1000
+system_prompt = ""
+qsystem_prompt = ""

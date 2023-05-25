@@ -1,0 +1,1 @@
+tailwindcss -i input.css -o .\templates\static\css\index.css --watch
