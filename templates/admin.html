@@ -1,0 +1,104 @@
+{{define "admin"}}
+<n-config-provider class="h-full" :theme-overrides="globalTheme">
+  <n-layout class="h-full" has-sider>
+    <n-layout-sider class="h-full" collapse-mode="width" :collapsed-width="64" :collapsed="collapsed" inverted bordered>
+      <n-menu
+        class="normal-menu"
+        value="account"
+        :collapsed-width="64"
+        :collapsed-icon-size="22"
+        :options="menuOptions"
+        inverted
+      />
+    </n-layout-sider>
+    <n-layout>
+      <n-layout-header class="flex h-16 z-10 absolute shadow items-center justify-between">
+        <div class="flex items-center">
+          <button class="flex px-3" @click="collapsed = !collapsed">
+            <iconify-icon v-if="collapsed" width="18" height="18" icon="ant-design:menu-unfold-outlined"></iconify-icon>
+            <iconify-icon v-else width="18" height="18" icon="ant-design:menu-fold-outlined"></iconify-icon>
+          </button>
+          <n-breadcrumb>
+            <n-breadcrumb-item> 账号管理 </n-breadcrumb-item>
+            <n-breadcrumb-item> 账号 </n-breadcrumb-item>
+          </n-breadcrumb>
+        </div>
+      </n-layout-header>
+      <n-layout-content class="h-full bg-[#f5f7f9]" content-style="padding: 24px;">
+        <n-card class="mt-16">
+          <div class="pb-3 flex">
+            <div class="flex flex-1 justify-start">
+              <n-input ref="searchInputRef" class="!w-40" v-model:value="search" placeholder="搜索"></n-input>
+            </div>
+            <div class="flex flex-1 justify-end items-center">
+              <n-button @click="showAddModal = true" :focusable="false">
+                <template #icon>
+                  <iconify-icon icon="ic:round-add"></iconify-icon>
+                </template>
+                新建
+              </n-button>
+              <n-divider vertical />
+              <n-button class="text-base" @click="handleReload" :focusable="false" text>
+                <iconify-icon icon="oi:reload"></iconify-icon>
+              </n-button>
+            </div>
+          </div>
+          <n-data-table :columns="columns" :data="tableData" :pagination="{pageSize: 10}" striped />
+
+          <n-modal
+            v-model:show="showAddModal"
+            :showIcon="false"
+            preset="dialog"
+            :title="edit ? '编辑' : '新建'"
+            :autoFocus="false"
+            :on-after-leave="resetFields"
+          >
+            <n-form
+              :model="account"
+              :rules="edit ? {} : addFormRules"
+              ref="addFormRef"
+              label-placement="left"
+              label-align="left"
+              label-width="auto"
+              class="py-4"
+            >
+              <n-form-item label="账号" path="username">
+                <n-input placeholder="请输入邮箱" v-model:value="account.username" />
+              </n-form-item>
+              <n-form-item label="密码" path="password">
+                <n-input type="password" placeholder="请输入密码" v-model:value="account.password" />
+              </n-form-item>
+              <n-form-item label="姓名" path="name">
+                <n-input placeholder="请输入姓名" v-model:value="account.name" />
+              </n-form-item>
+              <n-form-item label="GPT3" path="gpt3">
+                <n-input-number class="w-full" v-model:value="account.gpt3" />
+              </n-form-item>
+              <n-form-item label="GPT4" path="gpt4">
+                <n-input-number class="w-full" v-model:value="account.gpt4" />
+              </n-form-item>
+              <n-form-item label="M" path="m">
+                <n-input-number class="w-full" v-model:value="account.m" />
+              </n-form-item>
+              <n-form-item label="权限" path="role">
+                <n-select v-model:value="account.role" :options="roleOptions" />
+              </n-form-item>
+              <n-form-item label="禁用" path="disabled">
+                <n-switch v-model:value="account.disabled" />
+              </n-form-item>
+            </n-form>
+
+            <template #action>
+              <n-space>
+                <n-button @click="showAddModal = false">取消</n-button>
+                <n-button v-if="edit" type="primary" class="bg-[#10a37f]" @click="handleEdit">确定</n-button>
+                <n-button v-else type="primary" class="bg-[#10a37f]" @click="handleAdd">确定</n-button>
+              </n-space>
+            </template>
+          </n-modal>
+        </n-card>
+      </n-layout-content>
+    </n-layout>
+  </n-layout>
+</n-config-provider>
+{{end}}

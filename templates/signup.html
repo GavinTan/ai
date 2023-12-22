@@ -1,0 +1,82 @@
+{{define "signup"}}
+<div class="min-w-[320px] max-w-[384px] m-auto py-8 px-3">
+  <div class="flex justify-center items-center flex-col mb-32">
+    <img src="/static/32x32.png" />
+    <div class="text-gray-400">Moss</div>
+  </div>
+
+  <h1 class="text-center text-3xl font-bold text-[#2d333a] mb-10">
+    创建您的帐户
+  </h1>
+
+  <n-config-provider :theme-overrides="signupTheme">
+    <n-form
+      ref="formRef"
+      size="large"
+      label-placement="left"
+      :model="account"
+      :rules="rules"
+    >
+      <n-form-item path="username">
+        <n-input
+          v-model:value="account.username"
+          placeholder="邮箱"
+          :input-props="{autocomplete: 'email'}"
+        >
+        </n-input>
+      </n-form-item>
+      <n-form-item path="password">
+        <n-input
+          v-model:value="account.password"
+          placeholder="密码"
+          type="password"
+          showPasswordOn="click"
+          :input-props="{autocomplete: 'current-password'}"
+        >
+        </n-input>
+      </n-form-item>
+      <!-- <n-form-item>
+                <div class="flex justify-between">
+                    <div class="flex-initial">
+                        <n-checkbox v-model:checked="autoLogin">自动登录</n-checkbox>
+                    </div>
+                </div>
+            </n-form-item> -->
+      <n-form-item>
+        <n-button
+          class="min-h-[52px] text-base bg-[#10a37f] hover:shadow-[inset_0_0_0_150px_rgba(0,0,0,.1)]"
+          @click="handleSubmit"
+          :loading="loading"
+          type="primary"
+          block
+        >
+          注 册
+        </n-button>
+      </n-form-item>
+    </n-form>
+  </n-config-provider>
+  <div class="text-center">
+    已有帐户？
+    <router-link class="text-[#10a37f]" to="/login">登录</router-link>
+  </div>
+
+  <footer class="absolute bottom-0 left-0 w-full">
+    <div
+      class="px-3 pb-3 pt-2 text-center text-xs text-gray-600 md:px-4 md:pb-6 md:pt-3"
+    >
+      <span>
+        by
+        <a
+          href="https://github.com/gavintan/ai"
+          target="_blank"
+          rel="noreferrer"
+          class="underline"
+        >
+          GavinTan
+        </a>
+        .
+      </span>
+    </div>
+  </footer>
+</div>
+{{end}}
